@@ -1,5 +1,6 @@
-# HUNDIDOS (provisional)
+# STEAL FROM THE DRAGON (provisional)
 
-Juego cooperativo de rescate en barcos que se hunden, para Roblox.
+Juego de robo y defensa con sigilo por ruido, para Roblox.
 
-- Propuesta completa: [IDEA_JUEGO.md](IDEA_JUEGO.md)
+- Propuesta actual: [IDEA_JUEGO.md](IDEA_JUEGO.md)
+- Ideas descartadas: [ideas_descartadas/](ideas_descartadas/)

@@ -1,149 +1,160 @@
-# Propuesta de juego para Roblox: «HUNDIDOS» (nombre provisional)
+# Propuesta v2: «STEAL FROM THE DRAGON» (nombre provisional)
 
-> Juego cooperativo de rescate de cargamento, de 1 a 4 jugadores. Tu cuadrilla de chatarreros se mete en barcos que **se están hundiendo en tiempo real**. Tenéis que sacar todo el botín que podáis antes de que el agua os alcance.
+> Juego de robo y defensa con sigilo por ruido. Tú y los demás jugadores del servidor os coláis en la guarida de un **dragón gigante dormido** para robarle huevos y tesoros. Si haces ruido, se despierta. Además, puedes robar a los demás jugadores… y hacer ruido a propósito para que el dragón se despierte justo encima de ellos.
 
-Documento preparado el 8 de noviembre de 2026. Los datos de mercado están en la sección 9 con sus fuentes; varias son de terceros y no se pueden verificar al 100 %.
-
----
-
-## 1. Por qué esta idea y no otra
-
-| Lo que premia Roblox ahora | Cómo encaja HUNDIDOS |
-|---|---|
-| Desde junio de 2026 el algoritmo de recomendaciones mide la **retención a 28 días**, y desde agosto, retención y monetización juntas. | La progresión es larga: barco base, tripulación, colección de artefactos y un museo. Hay razones para volver la semana siguiente, no solo al día siguiente. |
-| La sección **Standout Games** (curada a mano) busca juegos *novedosos*: mecánicas poco habituales, estilo visual propio y mezclas de géneros que aprovechen avatares y funciones sociales. Los clones lo tienen difícil. | Mezcla extracción cooperativa con temática naval, que casi nadie toca en Roblox. Se puede postular. |
-| Los grandes éxitos recientes de no-tycoon son **cooperativos con tensión**: 99 Nights in the Forest, Doors y Animal Hospital, que salió en mayo de 2026 y ganó 4 premios de innovación. | El núcleo es cooperativo y el reloj es visible (el agua sube), pero el tono es más cómico que de terror puro. Eso amplía la edad del público. |
-| En Steam, los cooperativos «friendslop» (Lethal Company, R.E.P.O., Peak) han sido un fenómeno. En mi búsqueda **no encontré** un equivalente dominante en Roblox. | Llegáis antes a un hueco probado en otra plataforma. *Ojo: que mi búsqueda no lo encontrara no prueba que no exista; revisadlo en Roblox (sección 8).* |
-| El público de 13 años o más crece más rápido, y el de 18 o más gasta un 50 % más. Hay **+42 % de DevEx** por el gasto de mayores de 18 verificados en EE. UU. (en juegos con R15). | El humor físico y el caos con amigos funcionan para adolescentes y adultos. Usad R15 desde el principio. |
-| La sesión media en Roblox dura **9,8 minutos**, y el 44 % juega en PC y en móvil. | Una inmersión dura entre 6 y 10 minutos. Controles simples (coger, soltar, lanzar), pensados para móvil desde el primer día. |
-
-**Lo que descarté y por qué:**
-- **Otro «Steal a …» o tycoon:** domina las listas, pero está saturado de clones. Para destacar hace falta marketing que un equipo de 3 no puede igualar.
-- **Simulador de pulsar botones:** muy saturado y retención de libro.
-- **Terror puro:** es viable, pero ahora mismo compite contra 99 Nights, Doors y Animal Hospital en su terreno.
-- **Juego deportivo:** hay demanda, pero las señales son débiles según las propias fuentes, y exige un netcode de físicas muy fino.
+Documento preparado el 8 de noviembre de 2026. Las fuentes están al final. Muchas son guías y webs de estadísticas de terceros, así que las cifras son orientativas.
 
 ---
 
-## 2. El juego en una frase y el bucle principal
+## 1. La estrategia: combinar lo que ya funciona
 
-**Un barco se hunde. Tú y tus amigos tenéis 8 minutos para sacar la carga más valiosa. Lo que no saquéis, se lo queda el mar.**
+Las mecánicas no tienen dueño; los nombres, el arte, los personajes y la interfaz sí. Tomamos **bucles probados** de los juegos que dominan ahora y los envolvemos en una identidad propia.
+
+| Juego de referencia | Situación (nov. 2026) | Qué tomamos | Qué NO tomamos |
+|---|---|---|---|
+| **Steal An Egg** | N.º 1 en jugadores simultáneos: unos 790.000–890.000 el 7–8 nov.; más de 1 millón en octubre. | Robar en zonas vigiladas, incubar huevos, mascotas que generan dinero por segundo, zonas bloqueadas por una estadística, robar bases ajenas. | Su nombre, sus guardianes, su arte, su interfaz y sus mascotas. |
+| **Steal a Brainrot** | Récord histórico: más de 25 millones de jugadores simultáneos. | El «captura la bandera» de robar y volver corriendo a la base, la cerradura temporal de la base y el bucle infinito de tycoon. | Los personajes «brainrot» (son memes de terceros). |
+| **Grow a Garden** | Mantuvo récords durante 2026 y tiene secuela. | Eventos de clima que dan mutaciones, eventos en directo semanales a hora fija (su «Admin Abuse»), actualizaciones semanales con cuenta atrás. | Plantas, tiendas, estética. |
+| **DONT SPLASH** | Juego nuevo que más crece en noviembre (sale el 17 oct.; pico de 116.000). | **El monstruo que caza por el sonido**: cada ruido lo atrae. | El escenario de piscinas, el monstruo, el formato obby. |
+
+**La diferencia frente a los clones** (ya existen derivados como «Fake an Egg»): el guardián no es un NPC más, sino **un jefe gigante compartido por todo el servidor**, y el sigilo se basa en el ruido. Eso añade:
+1. **Sabotaje entre jugadores:** tiras una piedra cerca de un rival y el dragón se despierta encima de él. Genera los momentos de traición que se viralizan en TikTok.
+2. **Espectáculo:** cuando el dragón se despierta (rugido, barrido de fuego, todos corriendo), el momento se convierte solo en un clip.
+3. **Un tema eterno:** dragones y huevos de dragón gustan a todas las edades y no dependen de un meme que caduca.
+
+---
+
+## 2. Bucle principal
 
 ```
-HUB (muelle / vuestro barco)
-  → Elegir pecio (dificultad, tipo de carga, peligros)
-  → INMERSIÓN (6–10 min): explorar, coger, cargar entre dos, sacar por grúa/bote
-       · El agua sube por compartimentos (reloj visible)
-       · Objetos pesados = 2 jugadores · frágiles = no golpear · eléctricos = no mojar
-       · Peligros: pulpo/tiburón, explosiones de calderas, puertas atascadas, corrientes
-  → LIQUIDACIÓN: el botín se vende → cuota de la empresa (si no se cumple, «despido» = reinicio de racha)
-  → Mejoras: barco, equipo (arnés, bomba de achique, grúa), tripulación, cosméticos
-  → Artefactos raros → MUSEO personal visitable por otros jugadores
+TU BASE (cueva en el anillo exterior del mapa, servidor de 8 jugadores)
+  → Entras en la GUARIDA (centro del mapa). El dragón duerme sobre su tesoro.
+     · Medidor de RUIDO del dragón, compartido por todo el servidor
+     · Correr = ruido · andar = poco · agacharse = casi nada
+     · Monedas/huesos en el suelo = ruido al pisarlos · llevar un huevo = más lento
+     · Cuanto más cerca de la cabeza, más raro el botín
+  → Coges un huevo / tesoro y vuelves a tu base
+     · Otros jugadores pueden golpearte para que lo sueltes y quitártelo
+  → Si el dragón DESPIERTA: rugido, barrido de fuego, persecución.
+     A quien alcanza, suelta lo que llevaba → botín libre para cualquiera.
+  → En tu base: INCUBAS el huevo (de 1 minuto a varias horas, según rareza)
+  → La cría de dragón genera ORO/segundo en tu base (visible para todos)
+  → Oro → mejoras: botas silenciosas (sigilo), mochila, cerradura de base, incubadora
+  → Más sigilo → acceso a guaridas más profundas (dragón de hielo, de tormenta, del vacío…)
+  → Robar crías y huevos de las bases ajenas cuando su cerradura está abierta
 ```
 
-**Qué lo hace divertido** (lo que hay que validar con el prototipo):
-1. **Comedia física.** Dos jugadores cargando un piano por un pasillo inclinado mientras sube el agua. Eso son clips para TikTok y YouTube Shorts, que es vuestro marketing gratis.
-2. **Decisiones bajo presión.** ¿Volvemos a por el cofre o salimos ya? ¿Abrimos la escotilla aunque inunde el pasillo?
-3. **Roles que surgen solos.** Uno achica, otro carga, otro vigila al bicho. No hace falta imponer clases.
+### Sistemas de retención (D1, D7, D30)
+- **Ingresos sin conexión**, con límite: motivo para volver al día siguiente.
+- **Incubación en tiempo real:** el huevo raro tarda 2 horas, así que vuelves a abrirlo.
+- **Lunas y clima a nivel de servidor** (luna de sangre, tormenta, eclipse): los huevos robados durante el evento salen con mutación y multiplicador.
+- **Índice de dragones:** colección con recompensas por completar cada elemento.
+- **Renacer:** reinicias el oro a cambio de un multiplicador permanente y una base con mejor aspecto. Es el estándar del género para la retención a largo plazo.
+- **Intercambio de dragones:** **en la fase 2**, no en el lanzamiento. Engancha mucho a la comunidad, pero trae estafas y duplicaciones que hay que blindar.
 
 ---
 
-## 3. Sistemas que dan retención (D7 y D30)
+## 3. Motor de crecimiento: cómo pasar de 0 jugadores
 
-- **Progresión del barco base:** el barco es vuestro hub y cambia visualmente al mejorarlo. La identidad del grupo vive ahí.
-- **Colección de artefactos:** un libro tipo Pokédex con más de 100 piezas raras por tipo de pecio. El museo se puede visitar, lo que da estatus social.
-- **Pecios del día y de la semana**, con modificadores (tormenta, noche, hielo).
-- **Evento semanal «Leviatán»:** un jefe cooperativo. Usad *Experience Events* de Roblox, que Standout Games recomienda.
-- **Rachas de cuota** con recompensas cosméticas por mantenerlas.
-- **Temporadas de unas 6 semanas** con un nuevo tipo de pecio: transatlántico, submarino, nave hundida en un lago helado, galeón…
+Que un juego reciba tráfico depende de dos cosas: que los jugadores lleguen y que se queden (la retención es lo que el algoritmo mide). Esto es lo que va dentro del juego para conseguir ambas:
 
----
-
-## 4. Monetización (sin pagar para ganar)
-
-| Producto | Tipo |
+| Palanca | Implementación |
 |---|---|
-| Trajes de buzo, cascos, efectos de burbujas, skins del barco | Cosméticos (Game Pass y Developer Products) |
-| Pase de temporada (gratuito + premium) | Recurrente |
-| Servidores privados | Encaja de forma natural con un juego para jugar con amigos |
-| Ampliación del museo, más vitrinas | Comodidad o estatus |
-| Revivir a un compañero una vez por inmersión | Developer Product **con límite**, para no romper el juego |
-
-Referencia: solo el **3,8 %** de los jugadores paga (mediana de GameAnalytics 2026). Con un catálogo amplio de cosméticos y un pase de temporada se le saca más a ese 3,8 %, sin enfadar al 96 % restante.
+| **Se entiende en 3 segundos** | Nombre con la palabra «Steal», el término que la gente ya busca. Miniatura: ojo gigante del dragón abriéndose y un avatar con un huevo en brazos. Preparad 3 o 4 miniaturas y quedaos con la que mejor funcione. |
+| **Primeros 60 segundos** | Primer robo garantizado en menos de 30 s (huevo pequeño junto a la entrada) y primera eclosión en 60 s. Sin texto de tutorial: flechas y brillos. |
+| **Funciona con desconocidos** | Servidores de 8 en los que no hace falta tener amigos. *(Este era el fallo de HUNDIDOS: un cooperativo depende de traer a tus amigos.)* |
+| **Bonus por amigos** | +10 % de oro por cada amigo en el servidor, con un tope. Aviso de invitación justo después del primer robo con éxito. |
+| **Venganza** | «X te ha robado tu Dragón de Tormenta» → botones [Invitar amigos] y [Perseguir]. Robar crea rivalidad, y la rivalidad trae gente. |
+| **Eventos en directo a hora fija** | Cada sábado, «El Dragón Ancestral despierta»: botín masivo, mutaciones garantizadas y regalos para todo el servidor. Concentra jugadores a la vez, y esos picos se notan en las listas. |
+| **Actualización semanal con cuenta atrás en el juego** | Mismo día y misma hora cada semana. El jugador sabe cuándo volver. |
+| **Códigos para creadores** | Sistema de códigos desde el primer día. Contactad con YouTubers y TikTokers pequeños y medianos: acceso anticipado más código propio. Grow a Garden atribuye su primer pico a creadores de contenido. |
+| **Grupo de Roblox** | Cofre diario por unirse al grupo. Es la base para promocionar vuestros siguientes juegos entre sí. |
+| **Anuncios patrocinados** | Solo cuando la retención sea buena. Una guía de terceros cita unos 0,007 USD por partida iniciada (nov. 2025), así que 100.000 partidas rondarían los 700 USD. Es orientativo; medidlo vosotros. Los anuncios no suben vuestro puesto en la portada: solo traen gente a probar. |
+| **Creator Rewards / Audience Expansion** | Roblox paga una parte de lo que gastan los jugadores nuevos que llegan por vuestro enlace. Compartid siempre el enlace directo del juego. |
 
 ---
 
-## 5. Alcance realista para 3 personas
+## 4. Monetización (la probada en el género)
 
-### Reparto sugerido
+| Producto | Tipo | Nota |
+|---|---|---|
+| Botas silenciosas premium, mochila doble, cerradura larga | Game Pass | El núcleo del género. |
+| VIP (más oro, zona VIP, etiqueta en el chat) | Game Pass | |
+| Incubación instantánea | Developer Product | Monetiza la impaciencia sin romper el juego. |
+| **«Luna de sangre para todo el servidor»** | Developer Product | Un jugador paga y **todos** se benefician, con aviso en pantalla. Es social y genera agradecimiento y presión de grupo. |
+| Huevos de pago | Developer Product | **Obligatorio según la política de Roblox:** mostrar las probabilidades numéricas reales antes de comprar, actualizarlas si hay potenciadores activos y respetar `ArePaidRandomItemsRestricted` en las regiones donde aplica. |
+| Pieles de base, estelas, efectos de fuego | Cosmético | |
+
+Solo paga en torno al **3,8 %** de los jugadores (mediana de GameAnalytics 2026), así que todo el diseño gira en torno a dar razones para ese 3,8 % sin echar al resto.
+
+---
+
+## 5. Plan de producción (3 personas)
+
+Este género se construye rápido, y **la velocidad importa**: las modas en Roblox duran meses, no años. Si el lanzamiento se retrasa mucho, el «Steal» puede enfriarse. Por eso el núcleo (robar a un guardián dormido, base, incubación) se diseña para poder **cambiar el tema** sin reescribir el código.
+
 | Persona | Responsabilidad |
 |---|---|
-| **A: Sistemas (Luau)** | Servidor autoritativo: agua, carga de objetos y propiedad de red de las físicas, economía, guardado (DataStore/ProfileStore), antitrampas. |
-| **B: Mundo y arte** | Habitaciones modulares de barco (generación procedural por piezas), iluminación, efectos de agua, criaturas, estilo visual propio. |
-| **C: Experiencia y crecimiento** | Interfaz, controles para móvil, tutorial (el D1 depende de los primeros 60 segundos), monetización, analítica, Discord, TikTok y anuncios. |
+| **A: Sistemas (Luau)** | Servidor autoritativo: ruido e IA del dragón, cargar y soltar objetos, bases y cerraduras, guardado de datos, **antitrampas** (velocidad, teletransporte, distancia al coger objetos). Los juegos de robo son imán de exploits. |
+| **B: Mundo, modelos y animación** | Guarida, bases, dragones y crías. Con presupuesto: **encargad los modelos y animaciones de dragón** a artistas (Talent Hub de Roblox) y centraos en el montaje y los efectos. |
+| **C: Interfaz, economía y crecimiento** | Interfaz para móvil primero, hoja de cálculo de la economía (costes exponenciales, que no haya inflación), monetización, analítica, Discord, TikTok, creadores y anuncios. |
 
-Los tres tenéis Claude Pro: usadlo para generar y revisar Luau, documentar sistemas y escribir textos. **Montad Rojo + Git** para que el código del juego viva en este repositorio y podáis trabajar en paralelo sin pisaros.
-
-### Hitos
-| Fase | Duración orientativa | Entregable | Criterio para seguir |
-|---|---|---|---|
-| **0. Prototipo de diversión** | 2–3 semanas | 1 barco fijo, agua que sube, coger y cargar entre dos, 1 peligro. Sin arte. | Probadlo con 10 a 20 personas ajenas al equipo. Si no hay risas ni «otra más», **cambiad el enfoque antes de invertir más**. |
-| **1. MVP** | 2–3 meses | 3 tipos de pecio procedurales, hub, unas 20 mejoras, 1 criatura, móvil completo, tutorial, guardado. | Funciona estable con 4 jugadores en móvil de gama media. |
-| **2. Lanzamiento suave** | 2–4 semanas | Publicación con anuncios patrocinados de presupuesto pequeño. | Medir D1, D7, duración de sesión y tasa de rebote en la primera partida. Comparar con la tabla de abajo. |
-| **3. Escalar** | continuo | Actualización semanal pequeña, temporada cada ~6 semanas, postulación a Standout Games. | Retención estable o al alza. |
-
-### Métricas de referencia (GameAnalytics 2026, más de 500 juegos)
-| | Mediana | Top 1 % |
-|---|---|---|
-| D1 | 10,3 % | 22,2 % |
-| D7 | 1,6 % | 9,1 % |
-| D30 | 0,5 % | 4,7 % |
-
-Para un «éxito decente», apuntad a **D1 ≥ 15 % y D7 ≥ 4 %** en el lanzamiento suave. Esa cifra es mi criterio, no una garantía. Si os quedáis muy por debajo, arreglad el tutorial y el primer pecio antes de gastar más en anuncios.
-
----
-
-## 6. Riesgos técnicos y cómo reducirlos
-
-| Riesgo | Mitigación |
+| Semana | Entregable |
 |---|---|
-| Físicas de objetos cargados entre varios jugadores (lag, temblores) | Asignar la propiedad de red al portador principal. Cargar «entre dos» = restricción simple + reducir velocidad, no física realista. Prototipar esto **lo primero**. |
-| Agua que sube | Nada de agua de terreno dinámica: usad un plano o volumen por compartimento que sube con tween, y daño o ralentización por zona. Barato y legible en móvil. |
-| Rendimiento en móvil | Presupuesto de piezas por habitación, *streaming* activado, pocas luces dinámicas. |
-| Trampas (teletransportar botín, duplicar dinero) | El servidor valida todas las ventas y posiciones. Nunca confiar en el cliente. |
-| Que se perciba como copia de R.E.P.O. o Lethal Company | La identidad diferencial es **el barco que se hunde y el agua como reloj**. Nada de robots, monstruos o estética prestada de esos juegos. |
+| 1–2 | Medidor de ruido + dragón que despierta y persigue + coger/llevar/soltar + bases con cerradura. **Probadlo con 8 personas: ¿hay gritos y traiciones?** Si no, ajustad el ruido antes de seguir. |
+| 3–4 | Incubación, oro por segundo, mejoras, 2 guaridas, guardado, monetización básica, códigos. |
+| 5–6 | Pulido para móvil, antitrampas, eventos de luna, miniaturas, 2–3 creadores con acceso anticipado. |
+| 6–7 | **Lanzamiento.** Anuncios con presupuesto pequeño durante 3–7 días para medir retención. |
+| Después | Actualización semanal fija, evento del sábado y una guarida o dragón nuevo cada 2–3 semanas. |
+
+### Métricas de control (GameAnalytics 2026, más de 500 juegos)
+| | Mediana | Top 1 % | Objetivo antes de gastar fuerte en anuncios (mi criterio) |
+|---|---|---|---|
+| D1 | 10,3 % | 22,2 % | ≥ 15 % |
+| D7 | 1,6 % | 9,1 % | ≥ 4 % |
+| Sesión | 9,8 min | — | ≥ 15 min |
 
 ---
 
-## 7. Variantes si la idea principal no convence en el prototipo
+## 6. Riesgos (sin adornar)
 
-1. **Mudanzas imposibles:** el mismo motor de «cargar entre varios», pero en casas que se derrumban, se queman o se inundan. Más urbano, menos original.
-2. **Rescate en montaña / avalancha:** extracción de personas y equipo con frío y tormenta como reloj.
-3. **Brigada de bomberos cooperativa:** apagar y rescatar a la vez. Hay que revisar la competencia en Roblox.
-
-Las tres reutilizan el 70–80 % del código del prototipo, así que cambiar de rumbo sale barato.
+| Riesgo | Qué hacer |
+|---|---|
+| El género «Steal» está lleno de clones y la mayoría fracasa. | La diferencia tiene que **notarse en 10 segundos**: dragón gigante, ruido y sabotaje. Si en las pruebas parece «otro Steal An Egg», hay que exagerar más esa diferencia. |
+| La moda se enfría antes de lanzar. | Lanzar en 6–7 semanas, no en 6 meses. El tema es intercambiable. |
+| Trampas (duplicar oro, teletransportarse a la guarida) | Validación en el servidor de todo; nunca confiar en el cliente. Es imprescindible antes del lanzamiento. |
+| Inflación de la economía | Hoja de cálculo de costes y ganancias; simular 30 días de juego antes de lanzar. |
+| Que se perciba como copia | Nada de nombres, arte, interfaz ni personajes de otros juegos. Mecánicas sí, identidad no. |
+| Calificación de edad | Mantener el miedo ligero (sin sangre ni sustos fuertes) para poder optar a la calificación más baja y llegar al público más amplio. Revisad el cuestionario de madurez. |
 
 ---
 
-## 8. Antes de comprometeros (tareas para esta semana)
+## 7. Otras dos combinaciones con la misma estrategia (por si el prototipo no convence)
 
-- [ ] Buscar en Roblox: «sinking ship», «salvage», «shipwreck», «diver», «extraction co-op». Apuntad la competencia directa y su número de jugadores simultáneos (CCU). No pude consultar las listas oficiales desde esta sesión.
-- [ ] Mirar Rolimons o RoMonitor para comprobar cuántos cooperativos de extracción hay ahora en el top 200.
-- [ ] Decidir el nombre definitivo y comprobar que está libre en Roblox.
-- [ ] Montar Rojo + Git en este repositorio.
-- [ ] Empezar la Fase 0.
+1. **Pesca + robo:** pescas peces raros y los expones en tu acuario, que genera dinero por segundo; los demás pueden robártelos. Mezcla Fisch, el gran éxito de pesca de 2024–25, con el bucle de robo.
+2. **Granja de día + asedio de noche:** de día cultivas y mutas cosechas; de noche el servidor entero defiende contra hordas. Mezcla Grow a Garden, 99 Nights in the Forest y tower defense.
+
+Las dos reutilizan la base, el guardado, la economía, la monetización y el antitrampas del proyecto principal.
+
+---
+
+## 8. Esta semana
+
+- [ ] Buscad en Roblox: «steal a dragon», «dragon egg», «don't wake». Anotad la competencia directa y sus jugadores simultáneos. No pude consultar Roblox directamente desde esta sesión.
+- [ ] Elegid el nombre definitivo (opciones: *Steal from the Dragon*, *Don't Wake the Dragon*, *Steal a Dragon Egg*) y comprobad que no está cogido.
+- [ ] Montad Rojo + Git en este repositorio.
+- [ ] Empezad las semanas 1–2.
 
 ---
 
 ## 9. Fuentes
 
-Las consulté mediante buscador. Las páginas oficiales de Roblox no se podían abrir directamente desde esta sesión, así que algunos datos vienen de resúmenes de terceros.
-
-- Cambio de algoritmo de junio de 2026: [Roblox Newsroom – Optimizing Discovery](https://about.roblox.com/newsroom/2026/06/optimizing-discovery-great-games-reach-millions-players-roblox) · [lensblox](https://lensblox.com/blog/roblox-algorithm-change-2026-explained/)
-- Standout Games: [Documentación de Roblox](https://create.roblox.com/docs/creator-programs/standout-games)
-- DevEx +42 % para mayores de 18: [Roblox Newsroom](https://about.roblox.com/newsroom/2026/04/roblox-fuels-high-fidelity-games-over-18-players-increases-qualifying-devex-rate-42)
-- Benchmarks de retención y monetización: [GameAnalytics 2026 Roblox Report](https://www.gameanalytics.com/reports/2026-roblox-report) · [Resumen en gamedevreports](https://gamedevreports.substack.com/p/gameanalytics-key-roblox-and-roblox)
-- Audiencia por edad: [Newzoo/GEEIQ en gamedevreports](https://gamedevreports.substack.com/p/newzoo-and-geeiq-the-roblox-audience) · [eMarketer](https://www.emarketer.com/content/roblox-com-s-adult-audience-bigger-than-you-think) · [Konvoy (visión escéptica)](https://www.konvoy.vc/content/can-roblox-age-up)
-- Tendencias y éxitos de 2026: [Lista de juegos de Roblox (Wikipedia)](https://en.wikipedia.org/wiki/List_of_Roblox_games) · [Grow a Garden (Wikipedia)](https://en.wikipedia.org/wiki/Grow_a_Garden) · [Animal Hospital – GosuGamers](https://www.gosugamers.net/entertainment/news/78741-animal-hospital-becomes-roblox-s-latest-horror-sensation-here-s-everything-you-need-to-know)
-- Saturación de géneros (blogs y proveedores, poco fiables): [RoLearn](https://rolearn.dev/insights/unsaturated-roblox-game-genres-2026/) · [RoWatcher – tycoons](https://rowatcher.com/news/tycoon-games-the-genre-that-built-roblox-and-still-hasn-t-peaked) · [RoWatcher – mapa de oportunidades](https://rowatcher.com/news/roblox-genre-opportunity-map-2026-where-smart-developers-are-building-next)
-- Friendslop: [Wikipedia](https://en.wikipedia.org/wiki/Friendslop) · [Insider Gaming](https://insider-gaming.com/best-friendslop-games-you-need-to-play/)
+- Steal An Egg, mecánicas: [Página en Roblox](https://www.roblox.com/games/107778070777162/Steal-An-Egg) · [games.gg](https://games.gg/roblox/guides/steal-an-egg-beginner-guide/) · [Sportskeeda](https://www.sportskeeda.com/roblox-news/steal-an-egg-a-beginner-s-guide)
+- Jugadores simultáneos ahora: [LiveCounts](https://livecounts.nl/roblox-charts/) · [RoWatcher](https://rowatcher.com/roblox-player-count) · [clip.dor.gg (octubre)](https://clip.dor.gg/en/blog/roblox-popular-games-ranking)
+- Juegos que más crecen en noviembre: [GGRecon](https://www.ggrecon.com/articles/fastest-growing-new-roblox-games-november-2026/) · [Bloxrant](https://bloxrant.com/roblox-trending-games)
+- DONT SPLASH: [Bloxodes](https://bloxodes.com/wiki/dont-splash) · [RoWatcher](https://rowatcher.com/games/10771421858/dont-splash)
+- Steal a Brainrot y Grow a Garden: [Wikipedia – Steal a Brainrot](https://en.wikipedia.org/wiki/Steal_a_Brainrot) · [Wikipedia – Grow a Garden](https://en.wikipedia.org/wiki/Grow_a_Garden) · [Screen Rant](https://screenrant.com/roblox-steal-brainrot-fad-explanation/) · [RoLearn – análisis del récord de Grow a Garden](https://rolearn.dev/insights/grow-a-garden-ccu-record-analysis/)
+- Admin Abuse y eventos semanales: [Wiki de Grow a Garden](https://growagarden.fandom.com/wiki/Admin_Abuse) · [GameSpot](https://www.gamespot.com/articles/next-grow-a-garden-update-and-events/1100-6534922/)
+- Anuncios y captación: [Roblox – plataforma de anuncios](https://about.roblox.com/newsroom/2026/01/roblox-expands-advertising-platform) · [clipclip – coste de anuncios](https://clipclip.io/guides/roblox-ads-cost) · [clipclip – cómo conseguir jugadores](https://clipclip.io/guides/get-more-players) · [PPC Land](https://ppc.land/roblox-developers-buy-ads-for-traffic-as-80-of-top-games-use-ai/)
+- Benchmarks: [GameAnalytics 2026 Roblox Report](https://www.gameanalytics.com/reports/2026-roblox-report) · [gamedevreports](https://gamedevreports.substack.com/p/gameanalytics-key-roblox-and-roblox)
+- Política de artículos aleatorios de pago: [Documentación de Roblox](https://create.roblox.com/docs/production/monetization/paid-random-items)
